@@ -30,7 +30,7 @@
 
 
 
-<gap:plugin name="org.apache.cordova.device" />
+<gap:plugin name="org.apache.cordova.device" source="npm"/>
 
 <gap:plugin name="nl.x-services.plugins.toast" version="2.0.2" />
 
