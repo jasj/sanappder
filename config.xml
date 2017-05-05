@@ -45,7 +45,7 @@
 
 <gap:plugin name="org.apache.cordova.inappbrowser" source="npm" />
 
-<gap:plugin name="com.phonegap.plugins.pushplugin" source="npm" />
+<gap:plugin name="com.cordova.plugins.pushplugin" source="npm" />
 <gap:plugin name="org.apache.cordova.network-information" source="npm" />
 
 <gap:plugin name="org.apache.cordova.splashscreen" source="npm" />
