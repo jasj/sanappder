@@ -368,20 +368,7 @@ function makeSwipe(id){
 		entityIDs.push(currentEntityID);}
 		
 		
-			setTimeout(function(){
-					$('.pullDownLabel Roll').fadeOut(function(){
-						$(this).remove();
-								 myScroll3.scrollTo(0,-1);
-					},1000);
-					 spinnerOff=true;
-					 scrollInProgress=false;
-					
 			
-						}, 1);
-					 $('.pullDownLabel').fadeIn(1,function(){
-									document.getElementById("pullDownLabel").innerHTML = 'Pull Down to refresh';
-								});
-		
 		
 				current_inbox();
 				counterByMsg();

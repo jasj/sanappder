@@ -987,7 +987,14 @@ label.css-label {
 
 #categories li:first-child {
 	border-top: 1px solid #EFEFEF;
+	margin-top:24px;
 }
+
+#categories li:last-child {
+	visibility: hidden;
+}
+
+
 
 #categories li {
     width: 100%;
