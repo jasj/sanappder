@@ -153,10 +153,10 @@ $( document ).on('tapend','.dropdownBox',function(event){
 });
 
 //change values on rule description
-$(document).on('keyup','.rule input[type=tel]',function(){
+$(document).on('keyup','.rule input[type=number]',function(){
 		
 		$(this).parent().parent().parent().parent().parent().find($(this).attr('field')).html($(this).val());
-		$(this).parent().parent().find('input[type=tel]').each(function(){
+		$(this).parent().parent().find('input[type=number]').each(function(){
 			addRuleChange($(this).parent().parent().parent().parent().parent().attr('id').replace(/rule_(\S+)/,"$1"),$(this).attr('field'),$(this).val() == null || $(this).val() == "" ? $(this).attr("placeholder")  : $(this).val() );	
 		});
 		$(this).parent().parent().find('.SelectStyle').each(function(){
@@ -170,7 +170,7 @@ $(document).on('keyup','.rule input[type=tel]',function(){
 $(document).on('change','.SelectStyle',function(){
 		$(this).parent().parent().parent().parent().parent().parent().find('idTime').html($(this).find('option:selected').html());
 		$(this).css({"color" : "#1A73B6"});
-		$(this).parent().parent().find('input[type=tel]').each(function(){
+		$(this).parent().parent().find('input[type=number]').each(function(){
 			addRuleChange($(this).parent().parent().parent().parent().parent().attr('id').replace(/rule_(\S+)/,"$1"),$(this).attr('field'),$(this).val() == null || $(this).val() == "" ?    $(this).attr("placeholder") : $(this).val(),true);	
 		});
 		addRuleChange($(this).parent().parent().parent().parent().parent().attr('id').replace(/rule_(\S+)/,"$1"),'idTime',$(this).find('option:selected').val(),true);
@@ -211,28 +211,7 @@ $( document ).on("tapend",".icon-pencil",function(){
 //	$(this).prev().focus();
 });
 	
-//avoid non numeric symbols
- $(document).on("keydown",".rule input[type=tel]",function (e) {
-        // Allow: backspace, delete, tab, escape, enter and .
-        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-             // Allow: Ctrl+A
-            (e.keyCode == 65 && e.ctrlKey === true) ||
-             // Allow: Ctrl+C
-            (e.keyCode == 67 && e.ctrlKey === true) ||
-             // Allow: Ctrl+X
-            (e.keyCode == 88 && e.ctrlKey === true) ||
-             // Allow: home, end, left, right
-            (e.keyCode >= 35 && e.keyCode <= 39)) {
-                 // let it happen, don't do anything
-                 return;
-        }
-        // Ensure that it is a number and stop the keypress
-        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-            $(this).val(0);
-			e.preventDefault();
-			
-        }
-    });
+
 	
 	
 	
