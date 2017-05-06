@@ -205,6 +205,7 @@ $( document ).on('tapend','.wraperWindows',function(){
 $( document ).on('tapend','.dropdownOption ul li',function(){
 	var mg = $(this).attr('services').split("---");
 	if( mg[0] == "CAMBIAR"){
+		$(".dropdownOption").css({"bottom": "-1000px"})
 		$("[page-content=products][products=rules]").trigger("tapend")
 		$("[page-content=rules]").trigger("tapend")
 		currentProduct = mg[1]; 
@@ -215,7 +216,7 @@ $( document ).on('tapend','.dropdownOption ul li',function(){
 		
 		
 		back = ["inbox","MessageDetail"]
-		$(".dropdownOption").css({"bottom": "-10000px"})
+		
 		
 	}else{
 		requestService({"idMessage": $(this).attr('msg'), "code": $(this).attr('services'), "description": $(this).find('.oneOption').html()});
