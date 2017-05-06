@@ -310,9 +310,9 @@ rulePhaseSet = {
 	  {
 		"idRule": "R7",
 		"ruleName": "Monto máximo en el extranjero",
-		"active": false,
+		"active": true,
 		"description": "No permitir transaccione en el extranjero por montos superiores a <[singleAmount]> pesos.",
-		"singleAmount": 200
+		"singleAmount": 1000
 	  },
 	  {
 		"idRule": "R8",
@@ -357,9 +357,9 @@ rulePhaseSet = {
 	  {
 		"idRule": "R13",
 		"ruleName": "Cantidad de Retiros en ATM",
-		"active": false,
+		"active": true,
 		"description": "No permitir más de <[trxNo]> retiros en ATM en un lapso de <[idTime]>",
-		"trxNo": 122,
+		"trxNo": 2,
 		"idTime": 1
 	  }
 	 ]

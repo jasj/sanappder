@@ -42,7 +42,7 @@ function current_inbox_off(){
 	$("#inbox").addClass("active").show();
 	$("#headerMain").addClass("active").show();
 	Back = ["inbox"];
-	
+
 	$('#menuAppriz').fadeOut(300);
 	$('.allMenu').css({"right" : "-80%"});
 	$('.navAppriz li').eq(0).trigger("tapend");	
@@ -58,45 +58,8 @@ function counterByMsg(){
 
 	//pullDownEl = $('#pullDown');
 	
-	   myScroll3 = new IScroll('#wrapper_message', {
-		   probeType: 1, 
-		   mouseWheel: false,
-		   deceleration:0.0002,
-		   posReset: {x: 0, y: 40},
-		   pushDownToRefresh : function(){
-			   
-				if(true){
-			if(spinnerOff){
-					document.getElementById("pullDownLabel").innerHTML = '';
-					$('.pullDownLabel').html("<i class='roll fa fa-spinner fa-spin fa-3x'></i>");
-					spinnerOff=false;	
-					
-					
-					callNewMSG();
-				}}
-			   
-		   }
-		  
-		   });
 		   
-	   myScroll3.on('scroll', function(){
-		if (this.y >  50 &&  !scrollInProgress ) {
-			document.getElementById("pullDownLabel").innerHTML = $.t('Release to refresh...');
-			scrollInProgress = false;
-			
-			}else if(this.y <= 50){
-				document.getElementById("pullDownLabel").innerHTML = $.t('Pull Down to refresh');
-				
-				scrollInProgress = true;
-			}else{
-					document.getElementById("pullDownLabel").innerHTML = $.t('Release to refresh...');
-			}
-			
-			if(this.y>0){
-				$('.pullDownLabel').show();
-			}
-		
-}); 
+
 	
 		
 
@@ -290,7 +253,7 @@ function makeSwipe(id){
 				console.time("PostReq");
 			
 				data = mensajes
-				console.log(JSON.stringify(data));
+				//console.log(JSON.stringify(data));
 			console.timeEnd("PostReq");
 			console.time("MSGProc");
 			$('#categories').html("<div class='MsG'></div>");
@@ -370,7 +333,7 @@ function makeSwipe(id){
 		
 			
 		
-				current_inbox();
+				//current_inbox();
 				counterByMsg();
 				makeSwipe();
 				fix_messages();
@@ -391,7 +354,7 @@ function makeSwipe(id){
 			 $('.pullDown').html('Pull down to refresh'); */
 			//	$("*").scrollTop(2);
 				$("nav.categoryNav li span").addClass("active");
-				setTimeout(function(){oneTimeSendAjax = true;},500);
+		
 				
 			
 				
@@ -404,16 +367,6 @@ function makeSwipe(id){
 		else{	
 		
 		
-		$('.pullDownLabel').toggleClass('fa fa-spinner fa-spin fa-3x',false);
-				//	document.getElementById("pullDownLabel").innerHTML = 'Unable to connect';
-					
-					setTimeout(function(){
-					 spinnerOff=true;
-					 scrollInProgress=false;
-				
-					
-					 oneTimeSendAjax=true;
-						}, 1000);
 		
 		
 		}
@@ -507,12 +460,9 @@ $('#categories').html("<div class='MsG'></div>");
 				makeSwipe();
 				fix_messages();
 				$.jStorage.set('msg', btoa($('#categories').html()));
-				$('.refreshing_list').fadeOut(1000); 
-				
+			
 				
 				$("nav.categoryNav li span").addClass("active");
-				setTimeout(function(){oneTimeSendAjax = true;},500);
-				checkWithOutEntity();
 		//	counterByMsg();$('.refreshing_list').hide(); 
 			
 		

@@ -16,7 +16,7 @@ function matchColumnsHeight(){
 function showMessage(id){
 	//$('header .icon-back').css("color", "#0077C0" );
 	
-	scrollPosition = myScroll3.y;
+	
 //console.log("scroll y "+myScroll3.y);
 //myScroll3.scrollTo(0, )
 
@@ -215,6 +215,7 @@ $( document ).on('tapend','.dropdownOption ul li',function(){
 		
 		
 		back = ["inbox","MessageDetail"]
+		$(".dropdownOption").css({"bottom": "-10000px"})
 		
 	}else{
 		requestService({"idMessage": $(this).attr('msg'), "code": $(this).attr('services'), "description": $(this).find('.oneOption').html()});
