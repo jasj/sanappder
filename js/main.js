@@ -93,8 +93,8 @@
 		
 	
 	$( document ).on("tapend","a.icon-back", function(){
-		
-				
+		console.log("sdssdsd yo andres");
+					setTimeout(function(){$('.dropdownOption').css({'bottom': (-$('.dropdownOption').height()-50)+"px"})},555);
 			$('header .icon-back').css("color", "#FFFFFF" );
 			$('header .icon-menu').css("color", "#FFFFFF" );
 		
@@ -166,7 +166,7 @@ $( document ).on("tapend",'.weeksOption li',function(e){
 androidBackBtn = 0;
 //Buttons
 function backKeyDown() { 
-		
+			$('.dropdownOption').css({'bottom': (-$('.dropdownOption').height()-50)+"px"});
 		
 		$('header .icon-back').css("color", "#FFFFFF" );
 		$('header .icon-menu').css("color", "#FFFFFF" );
