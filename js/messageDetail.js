@@ -205,7 +205,14 @@ $( document ).on('tapend','.wraperWindows',function(){
 $( document ).on('tapend','.dropdownOption ul li',function(){
 	var mg = $(this).attr('services').split("---");
 	if( mg[0] == "CAMBIAR"){
-		$(".dropdownOption").css({"bottom": "-1000px"})
+		g = setInterval(function(){
+			$(".dropdownOption").css({"bottom": "-10000px"})
+				if($(".dropdownOption").css("bottom")== "-10000px")
+				{
+					clearInterval(g)
+				}
+			},
+		600)
 		$("[page-content=products][products=rules]").trigger("tapend")
 		$("[page-content=rules]").trigger("tapend")
 		currentProduct = mg[1]; 
