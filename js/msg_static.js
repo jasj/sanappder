@@ -19,7 +19,7 @@ function current_inbox(){
 	$('.allMenu').css({"right" : "-80%"});
 	$('.navAppriz li').eq(0).trigger("tapend");
 	
-	checkWithOutEntity();
+	//checkWithOutEntity();
 	if(currentEntityID>0)
 	{
 	getAds();
@@ -42,7 +42,7 @@ function current_inbox_off(){
 	$("#inbox").addClass("active").show();
 	$("#headerMain").addClass("active").show();
 	Back = ["inbox"];
-	
+
 	$('#menuAppriz').fadeOut(300);
 	$('.allMenu').css({"right" : "-80%"});
 	$('.navAppriz li').eq(0).trigger("tapend");	
@@ -58,45 +58,8 @@ function counterByMsg(){
 
 	//pullDownEl = $('#pullDown');
 	
-	   myScroll3 = new IScroll('#wrapper_message', {
-		   probeType: 1, 
-		   mouseWheel: false,
-		   deceleration:0.0002,
-		   posReset: {x: 0, y: 40},
-		   pushDownToRefresh : function(){
-			   
-				if(true){
-			if(spinnerOff){
-					document.getElementById("pullDownLabel").innerHTML = '';
-					$('.pullDownLabel').html("<i class='roll fa fa-spinner fa-spin fa-3x'></i>");
-					spinnerOff=false;	
-					
-					
-					callNewMSG();
-				}}
-			   
-		   }
-		  
-		   });
 		   
-	   myScroll3.on('scroll', function(){
-		if (this.y >  50 &&  !scrollInProgress ) {
-			document.getElementById("pullDownLabel").innerHTML = $.t('Release to refresh...');
-			scrollInProgress = false;
-			
-			}else if(this.y <= 50){
-				document.getElementById("pullDownLabel").innerHTML = $.t('Pull Down to refresh');
-				
-				scrollInProgress = true;
-			}else{
-					document.getElementById("pullDownLabel").innerHTML = $.t('Release to refresh...');
-			}
-			
-			if(this.y>0){
-				$('.pullDownLabel').show();
-			}
-		
-}); 
+
 	
 		
 
@@ -268,7 +231,7 @@ function makeSwipe(id){
 		}
 		
 				var unableToConnect=0;
-				
+			callNewMSG()	
 //bring message for this client
 		function callNewMSG(){
 			
@@ -288,7 +251,9 @@ function makeSwipe(id){
 			
 			
 				console.time("PostReq");
-			$.post('https://check-payment.herokuapp.com/santander',{"idSecretClient": idScretClient},function(data){
+			
+				data = mensajes
+				//console.log(JSON.stringify(data));
 			console.timeEnd("PostReq");
 			console.time("MSGProc");
 			$('#categories').html("<div class='MsG'></div>");
@@ -360,44 +325,15 @@ function makeSwipe(id){
 				
 				syncronizeOffLineMsg();
 				
-			},'json') .fail(function(e) {
-				
-					$('.pullDownLabel').toggleClass('fa fa-spinner fa-spin fa-3x',false);
-					document.getElementById("pullDownLabel").innerHTML = 'Unable to connect';
-					
-					setTimeout(function(){
-					 spinnerOff=true;
-					 scrollInProgress=false;
-				
-					 myScroll3.scrollTo(0,-1);
-						}, 5000);
-				
-				
-				
-			
-			}).done(function(){ 
 		//$('.pullDown').toggleClass('fa fa-spinner fa-spin fa-3x',false);\\
 		
 				if(entityIDs.length==0 ){
 		entityIDs.push(currentEntityID);}
 		
 		
-			setTimeout(function(){
-					$('.pullDownLabel Roll').fadeOut(function(){
-						$(this).remove();
-								 myScroll3.scrollTo(0,-1);
-					},1000);
-					 spinnerOff=true;
-					 scrollInProgress=false;
-					
 			
-						}, 1);
-					 $('.pullDownLabel').fadeIn(1,function(){
-									document.getElementById("pullDownLabel").innerHTML = 'Pull Down to refresh';
-								});
 		
-		
-				current_inbox();
+				//current_inbox();
 				counterByMsg();
 				makeSwipe();
 				fix_messages();
@@ -418,29 +354,19 @@ function makeSwipe(id){
 			 $('.pullDown').html('Pull down to refresh'); */
 			//	$("*").scrollTop(2);
 				$("nav.categoryNav li span").addClass("active");
-				setTimeout(function(){oneTimeSendAjax = true;},500);
+		
 				
 			
 				
 							
 		//	counterByMsg();$('.refreshing_list').hide(); 
 
-			});
+			;
 				
 		}
 		else{	
 		
 		
-		$('.pullDownLabel').toggleClass('fa fa-spinner fa-spin fa-3x',false);
-				//	document.getElementById("pullDownLabel").innerHTML = 'Unable to connect';
-					
-					setTimeout(function(){
-					 spinnerOff=true;
-					 scrollInProgress=false;
-				
-					 myScroll3.scrollTo(0,-1);
-					 oneTimeSendAjax=true;
-						}, 1000);
 		
 		
 		}
@@ -459,13 +385,13 @@ function makeSwipe(id){
 					$('.icon-back').show();
 			$("#deleteAllBtn").hide();
 			date = new Date();
-		if(oneTimeSendAjax){
+		
 			oneTimeSendAjax = false;
-			$.post('https://check-payment.herokuapp.com/santander',{"idSecretClient": idScretClient},function(data){
+			
 			
 $('#categories').html("<div class='MsG'></div>");
-			
-				//console.log(JSON.stringify(data));
+				data = mensajes;
+				console.log(JSON.stringify(data));
 				
 				$.each(data,function(index, message){
 					if($('#'+message['idMessage']).length > 0){ 
@@ -528,25 +454,18 @@ $('#categories').html("<div class='MsG'></div>");
 					$.jStorage.set('msg_div', btoa($('#categories').html()));
 				});
 				syncronizeOffLineMsg();
-			},'json') .fail(function(e) {
-					$('.refreshing_list').css({"background-color" : "#888"}).html('Conexion error!').fadeOut(3000,function(){$('.refreshing_list').css({"background-color" : "#F5F5Ff"}).html('Refreshing list');});
 			
-				//alert( JSON.stringify(e));getRules(kilomanyaroB)
-			}).done(function(){ 
 				current_inbox();
 				counterByMsg();
 				makeSwipe();
 				fix_messages();
 				$.jStorage.set('msg', btoa($('#categories').html()));
-				$('.refreshing_list').fadeOut(1000); 
-				
+			
 				
 				$("nav.categoryNav li span").addClass("active");
-				setTimeout(function(){oneTimeSendAjax = true;},500);
-				checkWithOutEntity();
 		//	counterByMsg();$('.refreshing_list').hide(); 
-			});
-		}
+			
+		
 			//$('#wrapper_message').height(window.innerHeight - 150);
 		
 		}
