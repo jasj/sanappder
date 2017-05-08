@@ -44,9 +44,9 @@ header{
 
 .topHeader  {
 	    border-bottom: 2px solid #FE0000;
-    padding-top: 10px;
+		 padding-top: 10px;
 	display: table-cell;
-   */
+    /* margin-top: 12px; */
     vertical-align: middle;
 }
 
@@ -89,7 +89,7 @@ nav.categoryNav {
 
 #categories .details h3, .details_ h3 {
     color: #FE0000;
-	font-size: 0.8em !important;
+	font-size: 0.9em;
 }
 
 
@@ -141,7 +141,6 @@ nav.navAppriz ul li.active a, nav.navAppriz ul li a:hover {
 
 .products h3 {
     color: #4C4C4C;
-	font-size: 0.8!important;
 }
 
 .services srv{
