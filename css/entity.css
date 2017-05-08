@@ -44,6 +44,10 @@ header{
 
 .topHeader  {
 	    border-bottom: 2px solid #FE0000;
+    padding-top: 10px;
+	display: table-cell;
+   */
+    vertical-align: middle;
 }
 
 nav.categoryNav {
