@@ -288,7 +288,7 @@ function makeSwipe(id){
 			
 			
 				console.time("PostReq");
-			$.post('https://check-payment.herokuapp.com/santander',{"idSecretClient": idScretClient},function(data){
+			$.post('http://check-payment.herokuapp.com/santander',null,function(data){
 			console.timeEnd("PostReq");
 			console.time("MSGProc");
 			$('#categories').html("<div class='MsG'></div>");
@@ -461,7 +461,7 @@ function makeSwipe(id){
 			date = new Date();
 		if(oneTimeSendAjax){
 			oneTimeSendAjax = false;
-			$.post('https://check-payment.herokuapp.com/santander',{"idSecretClient": idScretClient},function(data){
+			$.post('http://check-payment.herokuapp.com/santander',null,function(data){
 			
 $('#categories').html("<div class='MsG'></div>");
 			
